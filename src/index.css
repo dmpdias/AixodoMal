@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Cormorant Garamond", serif;
+
+  --color-ink: #0F172A;
+  --color-paper: #FDFCF8; /* More newspaper-like cream */
+  --color-accent: #E11D48;
+  --color-accent-hover: #BE123C;
+
+  /* Legacy aliases for compatibility */
+  --color-background: var(--color-paper);
+  --color-surface: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans antialiased selection:bg-accent selection:text-white;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@layer utilities {
+  .newsletter-body h2, .article-body h2 {
+    @apply text-2xl font-black uppercase tracking-tighter italic mt-12 mb-6 border-b-2 border-ink/10 pb-2;
+  }
+  .newsletter-body p, .article-body p {
+    @apply mb-6 leading-relaxed text-lg;
+  }
+  .newsletter-body p:first-of-type, .article-body p:first-of-type {
+    @apply first-letter:text-5xl first-letter:font-black first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-accent first-letter:leading-none;
+  }
+  .newsletter-body blockquote, .article-body blockquote {
+    @apply border-l-4 border-accent pl-6 py-4 my-10 italic text-2xl bg-accent/5 font-serif text-ink/80;
+  }
+  .newsletter-body ul, .article-body ul {
+    @apply space-y-4 my-8 list-none;
+  }
+  .newsletter-body li, .article-body li {
+    @apply flex items-start gap-3 before:content-['→'] before:text-accent before:font-black;
+  }
+  .newsletter-body strong, .article-body strong {
+    @apply font-black text-ink bg-accent/10 px-1 rounded-sm;
+  }
+  .newsletter-body em, .article-body em {
+    @apply font-serif italic text-accent underline decoration-accent/20 underline-offset-4;
+  }
+  .newsletter-body h3, .article-body h3 {
+    @apply text-xl font-black uppercase tracking-tight mt-10 mb-4 text-ink/70;
+  }
+  .newsletter-body hr, .article-body hr {
+    @apply border-ink/10 my-12;
+  }
+}
+
